@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Express.API/Express.API.csproj" />
+    <Project Path="src/Express.Application/Express.Application.csproj" />
+    <Project Path="src/Express.Domain/Express.Domain.csproj" />
+    <Project Path="src/Express.Infrastructure/Express.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>
