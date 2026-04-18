@@ -41,27 +41,6 @@ import { AdminSidebar } from '@/app/domains/admin/layout/ui/sidebar';
       </mat-sidenav>
 
       <mat-sidenav-content>
-        <!-- Banner -->
-        <div
-          class="relative w-full bg-emerald-600 px-6 py-4 font-medium text-white"
-        >
-          <a
-            class="absolute inset-0 z-10"
-            href="https://builderkit.dev?utm_source=fuse&utm_medium=banner&utm_campaign=upgrade"
-            target="_blank"
-            ><span></span
-          ></a>
-          Check out BuilderKit; the next generation of toolkit for building
-          beautiful Angular applications. Use promo code
-          <span
-            class="rounded-lg bg-emerald-300 px-1.5 py-0.5 text-base font-semibold text-emerald-950"
-            >FUSE</span
-          >
-          on checkout for
-          <span class="underline underline-offset-2">20%</span> off your
-          purchase!
-        </div>
-
         <!-- Toolbar -->
         <div class="flex items-center border-b px-4 py-2.5">
           <button

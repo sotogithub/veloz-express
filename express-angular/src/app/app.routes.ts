@@ -1,32 +1,52 @@
 import { Route } from '@angular/router';
 
-export const routes: Route[] = [
-  // Website routes
-  {
-    path: 'home',
-    loadChildren: () => import('./domains/website/routes'),
-  },
+// export const routes: Route[] = [
+//   // Website routes
+//   {
+//     path: '',
+//     loadChildren: () => import('./domains/website/routes'),
+//   },
 
-  // Auth
+//   // Auth
+//   {
+//     path: 'auth',
+//     loadChildren: () => import('./domains/auth/routes'),
+//   },
+
+//   {
+//     path: 'admin',
+//     loadChildren: () => import('./domains/admin/routes'),
+//   },
+
+//   // Coming soon
+//   {
+//     path: 'coming-soon',
+//     loadChildren: () => import('./domains/coming-soon/routes'),
+//   }
+  
+// ];
+
+export const routes: Route[] = [
+  // Módulos independientes (primero)
   {
     path: 'auth',
     loadChildren: () => import('./domains/auth/routes'),
-  },
-
-  // Admin
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'admin',
   },
   {
     path: 'admin',
     loadChildren: () => import('./domains/admin/routes'),
   },
-
-  // Coming soon
+    // Coming soon
   {
     path: 'coming-soon',
     loadChildren: () => import('./domains/coming-soon/routes'),
   },
+
+  // Layout público (al final)
+  {
+    path: '',
+    loadChildren: () => import('./domains/website/routes'),
+  },
+
+  { path: '**', redirectTo: '' }
 ];

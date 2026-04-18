@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'notifications',
-  imports: [MatButton, RouterLink, MatIcon],
+  imports: [MatButton, MatIcon],
   template: `
     <div
       class="@container mx-auto flex w-full max-w-5xl flex-auto flex-col gap-4 p-6 sm:gap-8 lg:p-10"
