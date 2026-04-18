@@ -1,32 +1,6 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
-// export const routes: Route[] = [
-//   // Website routes
-//   {
-//     path: '',
-//     loadChildren: () => import('./domains/website/routes'),
-//   },
-
-//   // Auth
-//   {
-//     path: 'auth',
-//     loadChildren: () => import('./domains/auth/routes'),
-//   },
-
-//   {
-//     path: 'admin',
-//     loadChildren: () => import('./domains/admin/routes'),
-//   },
-
-//   // Coming soon
-//   {
-//     path: 'coming-soon',
-//     loadChildren: () => import('./domains/coming-soon/routes'),
-//   }
-  
-// ];
-
-export const routes: Route[] = [
+export const routes: Routes = [
   // Módulos independientes (primero)
   {
     path: 'auth',
@@ -36,7 +10,7 @@ export const routes: Route[] = [
     path: 'admin',
     loadChildren: () => import('./domains/admin/routes'),
   },
-    // Coming soon
+  // Coming soon
   {
     path: 'coming-soon',
     loadChildren: () => import('./domains/coming-soon/routes'),
@@ -48,5 +22,5 @@ export const routes: Route[] = [
     loadChildren: () => import('./domains/website/routes'),
   },
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];

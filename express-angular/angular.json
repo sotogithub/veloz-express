@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "fuse": {
+    "express-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -27,6 +27,9 @@
             "styles": ["src/styles/styles.css"],
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "security": {
+              "allowedHosts": []
+            },
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -36,7 +39,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1Mb"
+                  "maximumWarning": "1MB"
+                  
                 },
                 {
                   "type": "anyComponentStyle",
@@ -57,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fuse:build:production"
+              "buildTarget": "express-angular:build:production"
             },
             "development": {
-              "buildTarget": "fuse:build:development"
+              "buildTarget": "express-angular:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,25 +1,23 @@
-import { TranslocoHttpLoader } from '@/app/core/transloco/transloco-http-loader';
+import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+
+import { routes } from './app.routes';
+import { provideClientHydration, withEventReplay, withIncrementalHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import {
-  ApplicationConfig,
-  isDevMode,
-  provideBrowserGlobalErrorListeners,
-} from '@angular/core';
-import { provideNativeDateAdapter } from '@angular/material/core';
+
+import { TranslocoHttpLoader } from './core/transloco/transloco-http-loader';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import {
-  provideClientHydration,
-  withIncrementalHydration,
-} from '@angular/platform-browser';
-import {
-  provideRouter,
-  withComponentInputBinding,
-  withInMemoryScrolling,
-} from '@angular/router';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideTransloco } from '@jsverse/transloco';
 import { provideIcons } from '@/app/core/icons/provider';
 import { provideTheming } from '@/app/core/theming';
-import { provideTransloco } from '@jsverse/transloco';
-import { routes } from './app.routes';
+
+// export const appConfig: ApplicationConfig = {
+//   providers: [
+//     provideBrowserGlobalErrorListeners(),
+//     provideRouter(routes), provideClientHydration(withEventReplay())
+//   ]
+// };
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -70,3 +68,4 @@ export const appConfig: ApplicationConfig = {
     }),
   ],
 };
+
