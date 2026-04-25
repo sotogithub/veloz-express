@@ -37,6 +37,12 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'chart-candlestick',
         route: '/admin/dashboards/finance',
       },
+      {
+        id: 'shipments/new',
+        label: 'Nuevo envio',
+        icon: 'chart-candlestick',
+        route: 'shipments-new',
+      },
     ],
   },
   {

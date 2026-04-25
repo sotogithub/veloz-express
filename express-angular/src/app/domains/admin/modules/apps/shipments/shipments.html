@@ -1,0 +1,126 @@
+<div
+      class="@container mx-auto flex w-full max-w-7xl flex-auto flex-col gap-4 p-6 sm:gap-6 lg:p-10 lg:pt-8"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between gap-x-3">
+        <div class="flex flex-col gap-y-0.5">
+          <div class="text-xl font-semibold tracking-tighter sm:text-2xl">
+            Finance
+          </div>
+          <div class="text-neutral-500">
+            Overview of your financial performance including revenue, expenses,
+            and profit trends.
+          </div>
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-auto"></div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-x-3">
+          <button
+            class="hidden sm:inline-flex"
+            matButton="outlined"
+          >
+            <mat-icon svgIcon="file-chart-column" />
+            Reports
+          </button>
+          <button
+            class="hidden sm:inline-flex"
+            matButton="outlined"
+          >
+            <mat-icon svgIcon="settings" />
+            Settings
+          </button>
+          <button
+            class="hidden sm:inline-flex"
+            mat-flat-button
+          >
+            <mat-icon svgIcon="upload" />
+            Export
+          </button>
+
+          <!-- Mobile actions menu -->
+          <div class="sm:hidden">
+            <button
+              matIconButton
+              [matMenuTriggerFor]="actionsMenu"
+            >
+              <mat-icon svgIcon="ellipsis" />
+            </button>
+            <mat-menu #actionsMenu="matMenu">
+              <button mat-menu-item>Export</button>
+              <button mat-menu-item>Reports</button>
+              <button mat-menu-item>Settings</button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div class="grid w-full grid-cols-1 gap-6">
+        <!-- Recent transactions table -->
+        <mat-card appearance="outlined">
+          <div class="p-6">
+            <div class="mr-4 truncate text-lg font-medium tracking-tight">
+              Recent transactions
+            </div>
+            <div class="font-medium text-neutral-500">
+              1 pending, 4 completed
+            </div>
+          </div>
+          <div class="mx-6 overflow-x-auto">
+            <h1>Contenido</h1>
+          </div>
+        </mat-card>
+
+        <!-- Budget -->
+        <mat-card
+          class="p-6"
+          appearance="outlined"
+        >
+          <div class="flex items-center">
+            <div class="flex flex-col">
+              <div class="mr-4 truncate text-lg font-medium tracking-tight">
+                Budget
+              </div>
+              <div class="font-medium text-neutral-500">
+                Monthly budget summary
+              </div>
+            </div>
+            <div class="-mt-2 -mr-2 ml-auto">
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="budgetMenu"
+              >
+                <mat-icon svgIcon="ellipsis" />
+              </button>
+              <mat-menu #budgetMenu="matMenu">
+                <button mat-menu-item>Expenses breakdown</button>
+                <button mat-menu-item>Savings breakdown</button>
+                <button mat-menu-item>Bills breakdown</button>
+                <mat-divider />
+                <button mat-menu-item>Print budget summary</button>
+                <button mat-menu-item>Email budget summary</button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="mt-6 text-sm">
+            Last month you had <strong>223</strong> expense transactions,
+            <strong>12</strong> savings entries and <strong>4</strong> bills.
+          </div>
+          <div class="my-8 space-y-8">
+            <h2>Budget Overview</h2>
+          </div>
+          <div class="mt-auto flex items-center">
+            <button
+              class="mt-2"
+              mat-stroked-button
+            >
+              Download Summary
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>

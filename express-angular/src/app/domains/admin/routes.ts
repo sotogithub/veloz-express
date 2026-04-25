@@ -17,6 +17,11 @@ const routes: Routes = [
         loadChildren: () => import('./modules/dashboards/routes'),
       },
 
+      {
+        path: 'shipments-new',
+        loadChildren: () => import('./modules/apps/shipments/shipments.routes'),
+      },
+
       // -----------------------------------------------------------------------
       // General
       // -----------------------------------------------------------------------
