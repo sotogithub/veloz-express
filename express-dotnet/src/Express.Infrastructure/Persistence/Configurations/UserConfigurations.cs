@@ -21,6 +21,8 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.Property(d => d.IsPrimary).HasColumnName("is_primary").HasDefaultValue(false);
         builder.Property(d => d.IsActive).HasColumnName("is_active").HasDefaultValue(true);
         builder.Property(d => d.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
+        builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
+        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasOne(d => d.User).WithMany(u => u.Addresses)
             .HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.Restrict);
@@ -37,15 +39,19 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.ToTable("roles");
         builder.HasKey(r => r.Id);
         builder.Property(r => r.Id).HasColumnName("id");
+        builder.Property(r => r.Code).HasColumnName("code").HasMaxLength(50).IsRequired();
         builder.Property(r => r.Name).HasColumnName("name").HasMaxLength(50).IsRequired();
         builder.Property(r => r.Description).HasColumnName("description").HasMaxLength(255);
         builder.Property(r => r.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
+        builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
+        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
+
         builder.HasIndex(r => r.Name).IsUnique();
 
         builder.HasData(
-            new { Id = 1, Name = "admin", Description = "System administrator", CreatedAt = new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0, DateTimeKind.Utc), UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
-            new { Id = 2, Name = "customer", Description = "User who creates and requests shipments", CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc), UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
-            new { Id = 3, Name = "courier", Description = "Delivery person who picks up and delivers packages", CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc), UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
+            new { Id = 1, Code = "admin", Name = "admin", Description = "System administrator", CreatedAt = new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0, DateTimeKind.Utc), UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
+            new { Id = 2, Code = "customer", Name = "customer", Description = "User who creates and requests shipments", CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc), UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
+            new { Id = 3, Code = "courier", Name = "courier", Description = "Delivery person who picks up and delivers packages", CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc), UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
         );
     }
 }
@@ -63,6 +69,9 @@ public class SessionConfiguration : IEntityTypeConfiguration<Session>
         builder.Property(s => s.UserAgent).HasColumnName("user_agent").HasMaxLength(500);
         builder.Property(s => s.ExpiresAt).HasColumnName("expires_at");
         builder.Property(s => s.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
+        builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
+        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
+
         builder.HasIndex(s => s.Token).IsUnique();
 
         builder.HasOne(s => s.User)
@@ -82,6 +91,10 @@ public class UbigeoConfiguration : IEntityTypeConfiguration<Ubigeo>
         builder.Property(u => u.Department).HasColumnName("department").HasMaxLength(100).IsRequired();
         builder.Property(u => u.Province).HasColumnName("province").HasMaxLength(100).IsRequired();
         builder.Property(u => u.District).HasColumnName("district").HasMaxLength(100).IsRequired();
+        builder.Property(u => u.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
+        builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
+        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
+
         builder.HasIndex(u => u.Code).IsUnique();
     }
 }
@@ -103,6 +116,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.IsEmailVerified).HasColumnName("email_verified").HasDefaultValue(false);
         builder.Property(u => u.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
+        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(u => u.Email).IsUnique();
 
@@ -121,10 +135,14 @@ public class VerificationTokenConfiguration : IEntityTypeConfiguration<Verificat
         builder.HasKey(t => t.Id);
         builder.Property(t => t.Id).HasColumnName("id");
         builder.Property(t => t.UserId).HasColumnName("user_id");
+        builder.Property(t => t.TokenTypeId).HasColumnName("token_type_id");
         builder.Property(t => t.Token).HasColumnName("token").HasMaxLength(255).IsRequired();
         builder.Property(t => t.ExpiresAt).HasColumnName("expires_at");
         builder.Property(t => t.IsUsed).HasColumnName("is_used").HasDefaultValue(false);
         builder.Property(t => t.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
+        builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
+        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
+
         builder.HasIndex(t => t.Token).IsUnique();
 
         builder.HasOne(t => t.User)
