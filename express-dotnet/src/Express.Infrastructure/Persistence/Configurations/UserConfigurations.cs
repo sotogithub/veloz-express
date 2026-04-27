@@ -22,7 +22,6 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.Property(d => d.IsActive).HasColumnName("is_active").HasDefaultValue(true);
         builder.Property(d => d.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasOne(d => d.User).WithMany(u => u.Addresses)
             .HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.Restrict);
@@ -44,7 +43,6 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.Property(r => r.Description).HasColumnName("description").HasMaxLength(255);
         builder.Property(r => r.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(r => r.Name).IsUnique();
 
@@ -70,7 +68,6 @@ public class SessionConfiguration : IEntityTypeConfiguration<Session>
         builder.Property(s => s.ExpiresAt).HasColumnName("expires_at");
         builder.Property(s => s.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(s => s.Token).IsUnique();
 
@@ -93,7 +90,6 @@ public class UbigeoConfiguration : IEntityTypeConfiguration<Ubigeo>
         builder.Property(u => u.District).HasColumnName("district").HasMaxLength(100).IsRequired();
         builder.Property(u => u.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(u => u.Code).IsUnique();
     }
@@ -116,7 +112,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.IsEmailVerified).HasColumnName("email_verified").HasDefaultValue(false);
         builder.Property(u => u.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(u => u.Email).IsUnique();
 
@@ -141,7 +136,6 @@ public class VerificationTokenConfiguration : IEntityTypeConfiguration<Verificat
         builder.Property(t => t.IsUsed).HasColumnName("is_used").HasDefaultValue(false);
         builder.Property(t => t.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(t => t.Token).IsUnique();
 

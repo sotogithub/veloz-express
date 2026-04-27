@@ -18,7 +18,6 @@ public class SearchUbigeoQueryHandler(IApplicationDbContext db)
     {
         var query = db.Ubigeos
             .AsNoTracking()
-            .Where(c => !c.IsDeleted)
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(req.Term))

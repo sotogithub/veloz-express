@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Express.Domain\Express.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Items\" />
-  </ItemGroup>
-
 </Project>

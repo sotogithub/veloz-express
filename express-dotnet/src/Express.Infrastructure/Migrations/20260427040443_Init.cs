@@ -22,7 +22,6 @@ namespace Express.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -41,7 +40,6 @@ namespace Express.Infrastructure.Migrations
                     description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     icon_url = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
                     is_active = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -59,7 +57,6 @@ namespace Express.Infrastructure.Migrations
                     code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -78,7 +75,6 @@ namespace Express.Infrastructure.Migrations
                     department = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     province = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     district = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -97,7 +93,6 @@ namespace Express.Infrastructure.Migrations
                     name = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
                     code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -124,7 +119,6 @@ namespace Express.Infrastructure.Migrations
                     price_per_kg = table.Column<decimal>(type: "numeric(10,2)", nullable: false, defaultValue: 0m),
                     max_weight_kg = table.Column<decimal>(type: "numeric(8,2)", nullable: true),
                     is_active = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -154,7 +148,6 @@ namespace Express.Infrastructure.Migrations
                     avatar_url = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
                     is_active = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
                     email_verified = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -178,7 +171,6 @@ namespace Express.Infrastructure.Migrations
                     ubigeo_id = table.Column<int>(type: "integer", nullable: false),
                     is_active = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
                     estimated_time_hours = table.Column<byte>(type: "smallint", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -208,7 +200,6 @@ namespace Express.Infrastructure.Migrations
                     longitude = table.Column<decimal>(type: "numeric(11,8)", nullable: true),
                     is_primary = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     is_active = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -245,7 +236,6 @@ namespace Express.Infrastructure.Migrations
                     last_location_update = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     average_rating = table.Column<decimal>(type: "numeric(3,2)", nullable: false, defaultValue: 5.00m),
                     total_deliveries = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -277,7 +267,6 @@ namespace Express.Infrastructure.Migrations
                     ip = table.Column<string>(type: "character varying(45)", maxLength: 45, nullable: true),
                     user_agent = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
                     expires_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -303,7 +292,6 @@ namespace Express.Infrastructure.Migrations
                     token = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     expires_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     is_used = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -356,7 +344,6 @@ namespace Express.Infrastructure.Migrations
                     actual_pickup_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     estimated_delivery_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     actual_delivery_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -412,7 +399,6 @@ namespace Express.Infrastructure.Migrations
                     assigned_by = table.Column<int>(type: "integer", nullable: false),
                     assignment_status_id = table.Column<int>(type: "integer", nullable: false),
                     notes = table.Column<string>(type: "text", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -460,7 +446,6 @@ namespace Express.Infrastructure.Migrations
                     resolution = table.Column<string>(type: "text", nullable: true),
                     ItemDetailId = table.Column<int>(type: "integer", nullable: false),
                     resolved_by = table.Column<int>(type: "integer", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -511,7 +496,6 @@ namespace Express.Infrastructure.Migrations
                     title = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
                     message = table.Column<string>(type: "text", nullable: false),
                     is_read = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -545,7 +529,6 @@ namespace Express.Infrastructure.Migrations
                     latitude = table.Column<decimal>(type: "numeric(10,8)", nullable: true),
                     longitude = table.Column<decimal>(type: "numeric(11,8)", nullable: true),
                     evidence_photo_url = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -581,7 +564,6 @@ namespace Express.Infrastructure.Migrations
                     external_reference = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     receipt_url = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
                     paid_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
@@ -625,7 +607,6 @@ namespace Express.Infrastructure.Migrations
                     rated_user_id = table.Column<int>(type: "integer", nullable: false),
                     score = table.Column<byte>(type: "smallint", nullable: false),
                     comment = table.Column<string>(type: "text", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },

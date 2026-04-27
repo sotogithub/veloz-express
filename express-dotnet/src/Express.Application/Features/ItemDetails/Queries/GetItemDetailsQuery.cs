@@ -14,7 +14,7 @@ public class GetItemDetailsQueryHandler(IApplicationDbContext db) : IRequestHand
     public async Task<Result<ItemDto>> Handle(GetItemDetailsQuery request, CancellationToken cancellationToken)
     {
         var query = db.ItemDetails
-           .Where(c => c.ItemId == request.itemId && !c.IsDeleted);
+           .Where(c => c.ItemId == request.itemId);
 
         // 🔍 aplicar filtro si hay texto
         if (!string.IsNullOrWhiteSpace(request.filterText))

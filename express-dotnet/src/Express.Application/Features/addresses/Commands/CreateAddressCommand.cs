@@ -2,7 +2,9 @@
 using Express.Application.Common.Models;
 using Express.Application.DTOs;
 using Express.Domain.Entities;
+using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Express.Application.Features.addresses.Commands;
 
@@ -22,19 +24,30 @@ public class CreateAddressCommandHandler(IApplicationDbContext db)
 
         if (req.IsPrimary)
         {
-            var previous = await db.Addresses
+            var previousAddresses = await db.Addresses
                 .Where(d => d.UserId == req.UserId && d.IsPrimary)
                 .ToListAsync(ct);
 
-            previous.ForEach(d => d.RemovePrimary());
+            foreach (var previous in previousAddresses)
+            {
+                previous.IsPrimary = false;
+            }
+
         }
 
-        var address = Address.Create(
-            req.UserId, req.UbigeoId, req.Address,
-            req.Alias, req.Reference, req.Latitude, req.Longitude
-        );
+        var address = new Address
+        {
+            UserId = req.UserId,
+            IsPrimary = req.IsPrimary,
+            UbigeoId = req.UbigeoId,
+            AddressLine = req.Address,
+            Alias = req.Alias,
+            Reference = req.Reference,
+            Latitude = req.Latitude,
+            Longitude = req.Longitude,
+        };
 
-        if (req.IsPrimary) address.SetPrimary();
+        
 
         db.Addresses.Add(address);
         await db.SaveChangesAsync(ct);
@@ -42,7 +55,7 @@ public class CreateAddressCommandHandler(IApplicationDbContext db)
         return Result<AddressDto>.Success(new AddressDto(
             address.Id,
             address.Alias,
-            address.AddressText,
+            address.AddressLine,
             address.Reference,
             ubigeo.District,
             ubigeo.Province,
@@ -52,3 +65,50 @@ public class CreateAddressCommandHandler(IApplicationDbContext db)
         ), 201);
     }
 }
+
+//// ── Request models ────────────────────────────────────────────────────────────
+//public record CreateAddressRequest(
+//    int UbigeoId, string Address,
+//    string? Alias, string? Reference,
+//    decimal? Latitude, decimal? Longitude,
+//    bool IsPrimary);
+
+//VALIDACIONES
+public class CreateAddressCommandValidator : AbstractValidator<CreateAddressCommand>
+{
+    public CreateAddressCommandValidator()
+    {
+        
+        RuleFor(x => x.UbigeoId)
+            .GreaterThan(0)
+            .WithMessage("El UbigeoId debe ser mayor a 0.");
+
+        RuleFor(x => x.Address)
+            .NotEmpty().WithMessage("La dirección es requerida.")
+            .MaximumLength(250).WithMessage("La dirección no puede exceder 250 caracteres.");
+
+        //RuleFor(x => x.Alias)
+        //    .MaximumLength(100).WithMessage("El alias no puede exceder 100 caracteres.")
+        //    .When(x => !string.IsNullOrWhiteSpace(x.Alias));
+
+        //RuleFor(x => x.Reference)
+        //    .MaximumLength(250).WithMessage("La referencia no puede exceder 250 caracteres.")
+        //    .When(x => !string.IsNullOrWhiteSpace(x.Reference));
+
+        //RuleFor(x => x.Latitude)
+        //    .InclusiveBetween(-90, 90)
+        //    .WithMessage("La latitud debe estar entre -90 y 90.")
+        //    .When(x => x.Latitude.HasValue);
+
+        //RuleFor(x => x.Longitude)
+        //    .InclusiveBetween(-180, 180)
+        //    .WithMessage("La longitud debe estar entre -180 y 180.")
+        //    .When(x => x.Longitude.HasValue);
+
+        //// Validación opcional: si uno viene, el otro también
+        //RuleFor(x => x)
+        //    .Must(x => x.Latitude.HasValue == x.Longitude.HasValue)
+        //    .WithMessage("Latitud y longitud deben enviarse juntos o ninguno.");
+    }
+}
+

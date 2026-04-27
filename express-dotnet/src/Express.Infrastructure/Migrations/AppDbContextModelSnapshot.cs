@@ -54,12 +54,6 @@ namespace Express.Infrastructure.Migrations
                         .HasDefaultValue(true)
                         .HasColumnName("is_active");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<bool>("IsPrimary")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
@@ -129,12 +123,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("now()");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<string>("Notes")
                         .HasColumnType("text")
                         .HasColumnName("notes");
@@ -186,12 +174,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("boolean")
                         .HasDefaultValue(true)
                         .HasColumnName("is_active");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<int>("UbigeoId")
                         .HasColumnType("integer")
@@ -250,12 +232,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("boolean")
                         .HasDefaultValue(true)
                         .HasColumnName("is_available");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<DateTime?>("LastLocationUpdate")
                         .HasColumnType("timestamp with time zone")
@@ -321,12 +297,6 @@ namespace Express.Infrastructure.Migrations
 
                     b.Property<int>("IncidentTypeId")
                         .HasColumnType("integer");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<int>("ItemDetailId")
                         .HasColumnType("integer");
@@ -394,12 +364,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("description");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -442,12 +406,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<int>("ItemId")
                         .HasColumnType("integer");
 
@@ -484,12 +442,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("now()");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<bool>("IsRead")
                         .ValueGeneratedOnAdd()
@@ -611,12 +563,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("text")
                         .HasColumnName("instructions");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<bool>("IsFragile")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
@@ -737,12 +683,6 @@ namespace Express.Infrastructure.Migrations
                         .HasDefaultValue(true)
                         .HasColumnName("is_active");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -787,12 +727,6 @@ namespace Express.Infrastructure.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)")
                         .HasColumnName("evidence_photo_url");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<decimal?>("Latitude")
                         .HasColumnType("decimal(10,8)")
@@ -867,12 +801,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("external_reference");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<int>("PackageId")
                         .HasColumnType("integer")
                         .HasColumnName("package_id");
@@ -938,12 +866,6 @@ namespace Express.Infrastructure.Migrations
                         .HasDefaultValue(true)
                         .HasColumnName("is_active");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<decimal?>("MaxWeightKg")
                         .HasColumnType("decimal(8,2)")
                         .HasColumnName("max_weight_kg");
@@ -995,12 +917,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("now()");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<int>("PackageId")
                         .HasColumnType("integer")
@@ -1061,12 +977,6 @@ namespace Express.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)")
                         .HasColumnName("description");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1141,12 +1051,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("character varying(45)")
                         .HasColumnName("ip");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<string>("Token")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -1211,12 +1115,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("district");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
-
                     b.Property<string>("Province")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -1274,12 +1172,6 @@ namespace Express.Infrastructure.Migrations
                         .HasColumnType("boolean")
                         .HasDefaultValue(true)
                         .HasColumnName("is_active");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<bool>("IsEmailVerified")
                         .ValueGeneratedOnAdd()
@@ -1342,12 +1234,6 @@ namespace Express.Infrastructure.Migrations
                     b.Property<DateTime>("ExpiresAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expires_at");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("is_deleted");
 
                     b.Property<bool>("IsUsed")
                         .ValueGeneratedOnAdd()

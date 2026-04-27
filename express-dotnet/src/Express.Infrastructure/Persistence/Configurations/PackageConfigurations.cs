@@ -19,8 +19,6 @@ public class AssignmentConfigurations : IEntityTypeConfiguration<Assignment>
         builder.Property(a => a.Notes).HasColumnName("notes");
         builder.Property(a => a.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(a => a.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasOne(a => a.Package).WithMany(p => p.Assignments)
             .HasForeignKey(a => a.PackageId).OnDelete(DeleteBehavior.Restrict);
@@ -48,8 +46,6 @@ public class CoverageZoneConfiguration : IEntityTypeConfiguration<CoverageZone>
         builder.Property(z => z.EstimatedTimeHours).HasColumnName("estimated_time_hours");
         builder.Property(z => z.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasIndex(z => z.UbigeoId).IsUnique();
         builder.HasOne(z => z.Ubigeo).WithOne(u => u.CoverageZone)
@@ -76,7 +72,6 @@ public class DriverProfileConfiguration : IEntityTypeConfiguration<DriverProfile
         builder.Property(m => m.TotalDeliveries).HasColumnName("total_deliveries").HasDefaultValue(0);
         builder.Property(m => m.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(m => m.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasOne(i => i.VehicleType).WithMany()
             .HasForeignKey(i => i.VehicleTypeId).OnDelete(DeleteBehavior.Restrict);
@@ -101,7 +96,6 @@ public class IncidentConfiguration : IEntityTypeConfiguration<Incident>
         builder.Property(i => i.ResolvedBy).HasColumnName("resolved_by");
         builder.Property(i => i.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(i => i.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
 
         builder.HasOne(i => i.Package).WithMany(p => p.Incidents)
@@ -133,8 +127,6 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
         
         builder.Property(i => i.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(i => i.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
     }
 }
@@ -152,7 +144,6 @@ public class ItemDetailConfiguration : IEntityTypeConfiguration<ItemDetail>
 
         builder.Property(i => i.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(i => i.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
 
         builder.HasOne(i => i.Item).WithMany(c => c.ItemDetails)
@@ -175,8 +166,6 @@ public class NotificationConfiguration : IEntityTypeConfiguration<Notification>
         builder.Property(n => n.IsRead).HasColumnName("is_read").HasDefaultValue(false);
         builder.Property(n => n.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasOne(n => n.User).WithMany(u => u.Notifications)
             .HasForeignKey(n => n.UserId).OnDelete(DeleteBehavior.Restrict);
@@ -221,8 +210,6 @@ public class PackageConfiguration : IEntityTypeConfiguration<Package>
         builder.Property(p => p.ActualPickupDate).HasColumnName("actual_pickup_date");
         builder.Property(p => p.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(p => p.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasIndex(p => p.TrackingCode).IsUnique();
 
@@ -259,7 +246,6 @@ public class PackageCategoryConfiguration : IEntityTypeConfiguration<PackageCate
         builder.Property(c => c.IsActive).HasColumnName("is_active").HasDefaultValue(true);
         builder.Property(c => c.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
 
         builder.HasIndex(c => c.Name).IsUnique();
     }
@@ -281,8 +267,6 @@ public class PackageTrackingConfiguration : IEntityTypeConfiguration<PackageTrac
         builder.Property(s => s.EvidencePhotoUrl).HasColumnName("evidence_photo_url").HasMaxLength(500);
         builder.Property(s => s.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasOne(s => s.Package).WithMany(p => p.Trackings)
             .HasForeignKey(s => s.PackageId).OnDelete(DeleteBehavior.Cascade);
@@ -310,8 +294,6 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         builder.Property(p => p.PaidAt).HasColumnName("paid_at");
         builder.Property(p => p.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(p => p.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasOne(p => p.Package).WithMany(pk => pk.Payments)
             .HasForeignKey(p => p.PackageId).OnDelete(DeleteBehavior.Restrict);
@@ -343,8 +325,6 @@ public class RateConfiguration : IEntityTypeConfiguration<Rate>
         builder.Property(t => t.IsActive).HasColumnName("is_active").HasDefaultValue(true);
         builder.Property(t => t.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(t => t.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasOne(t => t.Category).WithMany(c => c.Rates)
             .HasForeignKey(t => t.PackageCategoryId).OnDelete(DeleteBehavior.Restrict);
@@ -365,8 +345,6 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
         builder.Property(c => c.Comment).HasColumnName("comment");
         builder.Property(c => c.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("now()");
         builder.Property(u => u.UpdatedAt).HasColumnName("updated_at").HasDefaultValueSql("now()");
-        builder.Property(d => d.IsDeleted).HasColumnName("is_deleted").HasDefaultValue(false);
-
 
         builder.HasIndex(c => c.PackageId).IsUnique();
 
