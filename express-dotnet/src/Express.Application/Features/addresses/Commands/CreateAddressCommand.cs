@@ -48,7 +48,6 @@ public class CreateAddressCommandHandler(IApplicationDbContext db)
         };
 
         
-
         db.Addresses.Add(address);
         await db.SaveChangesAsync(ct);
 
@@ -65,13 +64,6 @@ public class CreateAddressCommandHandler(IApplicationDbContext db)
         ), 201);
     }
 }
-
-//// ── Request models ────────────────────────────────────────────────────────────
-//public record CreateAddressRequest(
-//    int UbigeoId, string Address,
-//    string? Alias, string? Reference,
-//    decimal? Latitude, decimal? Longitude,
-//    bool IsPrimary);
 
 //VALIDACIONES
 public class CreateAddressCommandValidator : AbstractValidator<CreateAddressCommand>

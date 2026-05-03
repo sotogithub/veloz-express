@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Express.Domain\Express.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\PackageCategories\Commands\" />
+  </ItemGroup>
+
 </Project>

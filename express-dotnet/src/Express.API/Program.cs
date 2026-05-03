@@ -66,14 +66,23 @@ var allowedOrigins = builder.Configuration
     .Get<string[]>()
     ?? ["http://localhost:4200", "http://localhost:4000"];
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(policy =>
+//    {
+//        policy.WithOrigins(allowedOrigins)
+//              .AllowAnyHeader()
+//              .AllowAnyMethod()
+//              .AllowCredentials();
+//    });
+//});
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
+    options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins(allowedOrigins)
+        policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
     });
 });
 
@@ -89,7 +98,9 @@ await DbSeeder.SeedAsync(app.Services);
 // ── Middleware pipeline ────────────────────────────────────────────────────────
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors();
+//app.UseCors();
+app.UseCors("CorsPolicy");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

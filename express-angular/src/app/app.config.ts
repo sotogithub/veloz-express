@@ -12,17 +12,11 @@ import { provideTransloco } from '@jsverse/transloco';
 import { provideIcons } from '@/app/core/icons/provider';
 import { provideTheming } from '@/app/core/theming';
 
-// export const appConfig: ApplicationConfig = {
-//   providers: [
-//     provideBrowserGlobalErrorListeners(),
-//     provideRouter(routes), provideClientHydration(withEventReplay())
-//   ]
-// };
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(withFetch()),
+    // provideHttpClient(),
     provideClientHydration(withIncrementalHydration()),
     provideRouter(
       routes,
