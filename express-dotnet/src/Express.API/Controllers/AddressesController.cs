@@ -11,7 +11,7 @@ public class AddressesController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetAddresses(CancellationToken ct)
     {
-        var result = await Sender.Send(new GetAddressesQuery(1), ct);
+        var result = await Sender.Send(new GetAddressesQuery(6), ct);
 
         return result.IsSuccess
             ? Ok(result.Value)
