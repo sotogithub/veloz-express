@@ -25,7 +25,6 @@ import { Router, RouterLink } from '@angular/router';
     MatIconModule,
     MatCheckboxModule,
     FormField,
-    MatDivider,
   ],
 })
 export default class AuthSignIn {

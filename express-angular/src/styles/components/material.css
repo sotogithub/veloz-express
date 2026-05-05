@@ -301,6 +301,16 @@
   /* ------------------------------------------------------------------------ */
   /* Autocomplete                                                             */
   /* ------------------------------------------------------------------------ */
+  --mat-autocomplete-background-color: light-dark(
+    var(--color-white),
+    var(--color-neutral-800)
+  );
+  --mat-autocomplete-container-shape: 0.5rem; /* 8px */
+
+  .mat-mdc-autocomplete-panel {
+    border-radius: 0.5rem; /* 8px */
+    background-color: var(--mat-autocomplete-background-color);
+  }
 
   /* ------------------------------------------------------------------------ */
   /* Badge                                                                    */

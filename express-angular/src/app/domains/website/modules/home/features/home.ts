@@ -6,7 +6,7 @@ import { FooterWebsite } from '../../../layout/components/footer/footer';
 
 @Component({
   selector: 'website-home',
-  imports: [RouterLink, MatButton, HeaderWebsite, FooterWebsite],
+  imports: [HeaderWebsite, FooterWebsite],
   template: `
     <!-- VelozExpress Landing Page -->
 <div class="min-h-screen bg-white text-slate-900 antialiased overflow-x-hidden">

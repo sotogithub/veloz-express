@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class Ubigeos extends BaseService {
   search(term: any): Observable<any> {
-    return this._httpClient.get<any>(`${this._env.apiUrl}/api/ubigeos`, {
+    return this._httpClient.get<any>(`${this._env.apiUrl}/api/ubigeos/search`, {
       params: { term },
     });
   }
